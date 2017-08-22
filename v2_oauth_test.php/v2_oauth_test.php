@@ -11,7 +11,8 @@
 	if (array_key_exists('code', $_GET))
 	{
 		$url = 'https://api.bytehand.com/v2/oauth/token';
-		$data = array('code' => $_GET["code"], 'grant_type' => 'authorization_code', 'client_secret' => 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
+		$data = array('code' => $_GET["code"], 'grant_type' => 'authorization_code',
+			'client_secret' => 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
 			'redirect_uri' => 'https://v1.bytehand.com/v2_oauth_test', 'client_id' => '1');
 		$options = array(
 			'http' => array(
@@ -54,7 +55,8 @@
 <?php
 	}
 ?>
-		<a href="https://www.bytehand.com/api/v2/oauth/authorize?client_id=1&amp;response_type=code&amp;scope=profile_view,sms_view&amp;state=12345678&amp;redirect_uri=https://v1.bytehand.com/v2_oauth_test">View my recent SMS messages.</a>
+		<a href="https://www.bytehand.com/api/v2/oauth/authorize?client_id=1&amp;response_type=code&amp;scope=profile_view,sms_view&amp;state=12345678&amp;redirect_uri=https://v1.bytehand.com/v2_oauth_test">
+			View my recent SMS messages.</a>
 <?php
 	if ($messages != null)
 	{
@@ -65,7 +67,12 @@
 		foreach ($messages as &$message)
 		{
 ?>
-			<tr><td><?php echo($message['id']); ?></td><td><?php echo($message['sender']); ?></td><td><?php echo($message['receiver']); ?></td><td><?php echo($message['text']); ?></td></tr>
+			<tr>
+				<td><?php echo($message['id']); ?></td>
+				<td><?php echo($message['sender']); ?></td>
+				<td><?php echo($message['receiver']); ?></td>
+				<td><?php echo($message['text']); ?></td>
+			</tr>
 <?php                         
 		}
 ?>
