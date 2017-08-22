@@ -13,7 +13,7 @@
 		$url = 'https://api.bytehand.com/v2/oauth/token';
 		$data = array('code' => $_GET["code"], 'grant_type' => 'authorization_code',
 			'client_secret' => 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
-			'redirect_uri' => 'https://v1.bytehand.com/v2_oauth_test', 'client_id' => '1');
+			'redirect_uri' => 'https://dev.bytehand.com/demo/v2/oauth', 'client_id' => '1');
 		$options = array(
 			'http' => array(
 				'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -27,7 +27,7 @@
 		else
 		{
 			$oauth_credential = json_decode($result, true);
-			$redirect_to = 'https://v1.bytehand.com/v2_oauth_test?access_token='.$oauth_credential['access_token'];
+			$redirect_to = 'https://dev.bytehand.com/demo/v2/oauth?access_token='.$oauth_credential['access_token'];
 			header('Location: '.$redirect_to);
 			exit();
 		}
@@ -55,7 +55,7 @@
 <?php
 	}
 ?>
-		<a href="https://www.bytehand.com/api/v2/oauth/authorize?client_id=1&amp;response_type=code&amp;scope=profile_view,sms_view&amp;state=12345678&amp;redirect_uri=https://v1.bytehand.com/v2_oauth_test">
+		<a href="https://www.bytehand.com/api/v2/oauth/authorize?client_id=1&amp;response_type=code&amp;scope=profile_view,sms_view&amp;state=12345678&amp;redirect_uri=https://dev.bytehand.com/demo/v2/oauth">
 			View my recent SMS messages.</a>
 <?php
 	if ($messages != null)
